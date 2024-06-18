@@ -2,6 +2,7 @@ using HET.BLL.Services.Interfaces;
 using HET.DAL.Models;
 using HET.UI.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Diagnostics;
 
 namespace HET.UI.Controllers
@@ -17,6 +18,10 @@ namespace HET.UI.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            ViewBag.InsulationType = new SelectList(new List<string> { "High", "Medium", "Medium" });
+            ViewBag.HeatingSystemType = new SelectList(new List<string> { "Gas", "Electric", "Heat Pump" });
+            ViewBag.CoolingSystemType = new SelectList(new List<string> { "Central AC", "Window Units"});
+            ViewBag.LightingType = new SelectList(new List<string> { "LED", "CFL", "Incandescent" });
             return View(new HouseEnergyModel());
         }
         [HttpPost]
@@ -28,7 +33,10 @@ namespace HET.UI.Controllers
                 model.EnergyConsumption = result;
                 return RedirectToAction("Result",model);
             }
-
+            ViewBag.InsulationType = new SelectList(new List<string> { "High", "Medium", "Medium" });
+            ViewBag.HeatingSystemType = new SelectList(new List<string> { "Gas", "Electric", "Heat Pump" });
+            ViewBag.CoolingSystemType = new SelectList(new List<string> { "Central AC", "Window Units" });
+            ViewBag.LightingType = new SelectList(new List<string> { "LED", "CFL", "Incandescent" });
             return View("Index", model);
         }
 

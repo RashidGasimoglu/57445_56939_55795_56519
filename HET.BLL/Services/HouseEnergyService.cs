@@ -13,28 +13,28 @@ namespace HET.BLL.Services
         public double CalculateEnergyConsumption(HouseEnergyModel model)
         {
             // Business logic for energy consumption calculation
-            double baseEnergyConsumption = model.HouseArea * 1.2; // base energy consumption per square meter
+            double baseEnergyConsumption = model.HouseArea * 0.2; // base energy consumption per square meter
 
             double insulationFactor = GetInsulationFactor(model.InsulationType);
-            double windowFactor = model.WindowArea * 1.05;
-            double occupantFactor = model.NumberOfOccupants * 1.1;
+            double windowFactor = model.WindowArea * 0.05;
+            double occupantFactor = model.NumberOfOccupants * 0.1;
             double heatingFactor = GetHeatingSystemFactor(model.HeatingSystemType);
             double coolingFactor = GetCoolingSystemFactor(model.CoolingSystemType);
-            double applianceFactor = model.ApplianceEfficiency * 1.1;
+            double applianceFactor = model.ApplianceEfficiency * 0.1;
             double lightingFactor = GetLightingFactor(model.LightingType);
-            double sunlightFactor = model.AnnualSunlightHours * 1.001;
-            double temperatureFactor = model.OutdoorTemperatureRange * 1.2;
+            double sunlightFactor = model.AnnualSunlightHours * 0.001;
+            double temperatureFactor = model.OutdoorTemperatureRange * 0.2;
 
             double totalEnergyConsumption = baseEnergyConsumption
-                                            + insulationFactor
-                                            + windowFactor
-                                            + occupantFactor
-                                            + heatingFactor
-                                            + coolingFactor
-                                            + applianceFactor
-                                            + lightingFactor
-                                            + sunlightFactor
-                                            + temperatureFactor;
+                                            * insulationFactor
+                                            / windowFactor
+                                            * occupantFactor
+                                            * heatingFactor
+                                            * coolingFactor
+                                            * applianceFactor
+                                            * lightingFactor
+                                            / sunlightFactor
+                                            * temperatureFactor;
 
             // Normalize to kWh/m^2 per year
             double energyConsumptionPerYear = totalEnergyConsumption / model.HouseArea;

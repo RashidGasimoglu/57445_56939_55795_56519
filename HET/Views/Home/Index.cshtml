@@ -60,7 +60,7 @@
                         </div>
                         <div class="col-md-12">
                             <label asp-for="InsulationType" class="form-label">Insulation Type</label>
-                            <input asp-for="InsulationType" class="form-control" />
+                            <select asp-for="InsulationType" class="form-control" asp-items="ViewBag.InsulationType"> </select>
                             <span asp-validation-for="InsulationType" class="text-danger"></span>
                         </div>
                         <div class="col-md-12">
@@ -75,12 +75,12 @@
                         </div>
                         <div class="col-md-12">
                             <label asp-for="HeatingSystemType" class="form-label">Heating System Type</label>
-                            <input asp-for="HeatingSystemType" class="form-control" />
+                            <select asp-for="HeatingSystemType" class="form-control" asp-items="ViewBag.HeatingSystemType"> </select>
                             <span asp-validation-for="HeatingSystemType" class="text-danger"></span>
                         </div>
                         <div class="col-md-12">
                             <label asp-for="CoolingSystemType" class="form-label">Cooling System Type</label>
-                            <input asp-for="CoolingSystemType" class="form-control" />
+                            <select asp-for="CoolingSystemType" class="form-control" asp-items="ViewBag.CoolingSystemType"> </select>
                             <span asp-validation-for="CoolingSystemType" class="text-danger"></span>
                         </div>
                         <div class="col-md-12">
@@ -90,7 +90,7 @@
                         </div>
                         <div class="col-md-12">
                             <label asp-for="LightingType" class="form-label">Lighting Type</label>
-                            <input asp-for="LightingType" class="form-control" />
+                            <select asp-for="LightingType" class="form-control" asp-items="ViewBag.LightingType"> </select>
                             <span asp-validation-for="LightingType" class="text-danger"></span>
                         </div>
                         <div class="col-md-12">
